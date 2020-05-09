@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+{% for i in data %}
+<form method="post">
+	{% csrf_token %}
+	<div class="card" style="width: 18rem;margin-left: 30%;margin-top: 5%;">
+  	<h4>Give Your Vote:</h4>
+  <div class="card-body">
+		    <h5 class="card-title">{{i.question}}</h5>
+			<input type="radio" name="option_one"  id="option_one" value="{{i.option_one}}">{{i.option_one}}
+			<input type="radio" name="option_one" id="option_one" value="{{i.option_two}}">
+			{{i.option_two}}
+			<input type="radio" name="option_one" id="option_one" value="{{i.option_three}}">
+			{{i.option_three}}
+			<br><br>
+			<button type="submit" class="btn btn-success">Vote</button>
+</div>
+</div>
+</form>
+</form>
+{% endfor %}
+{% endblock %}

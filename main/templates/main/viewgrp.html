@@ -1,0 +1,82 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<div class="row mx-md-n5">
+  <div class="col px-md-5"><div class="p-3 border bg-light">
+
+{% for i in data%}
+<div style="margin-left: 20%;margin-top: 0px;">
+<img src="{{i.groupicon.url}}" height="200px" width="200px" style="border-radius: 100px;margin-left: 14%;">
+<br><br>
+
+{% ifequal user.info.SorT 'teacher' %}
+<a href="{%url 'addnotice' id %}">
+  <button class="btn btn-success">Add Notice</button></a>
+
+<a href="{%url 'takepoll' id %}">
+  <button class="btn btn-success">Take Poll</button></a>
+<!------UPLOAD PROFILE  --->
+{% endifequal %}
+
+<br>
+  <a href="#" class="list-group-item " style="width: 600px;"><h4>GroupName: {{i}}  </h4></a>
+  <a href="#" class="list-group-item" style="width: 600px;"><h5>Description: {{i.description}}</h5></a>
+   <a href="#" class="list-group-item" style="width: 600px;"><h5>Stream: {{i.stream}}</h5></a>
+   <a href="#" class="list-group-item" style="width: 600px;"><h5>Group-CreatedBy: {{i.li}}</h5></a>
+   <a href="#" class="list-group-item" style="width: 600px;"><h5>Group-Key: {{i.grkey}}</h5></a>
+
+{% endfor %}
+
+  <div class="col px-md-5"><div class="p-3 border bg-light">
+
+<div style="margin-left: 0%;">
+<li href="#" class="list-group-item " style="width: 300px;"><h4>Group Members:</h4></li>
+
+{% for i in data1 %}
+	
+ <li href="#" class="list-group-item " style="width: 300px;"><h4>{{i.name}}
+ </h4></li>
+{% endfor %}
+</div>
+
+</div></div>
+
+
+</div>
+</div>
+
+
+</div></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>Poll</h4>
+
+
+{% for i in data3 %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{i}}</h5>
+    <a href="{% url 'givepollans' i.id%}"><button class="btn btn-success">Vote</button></a>
+{% endfor %}
+
+</div></div>
+</div>
+<div class="col">
+<h4>Notice:</h4>
+
+{% for i in data2 %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{i.li.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{i.text}}</h6>
+
+{% endfor %}
+  </div>
+  </div> 
+</div>
+
+
+{% endblock %}

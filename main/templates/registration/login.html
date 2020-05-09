@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+   
+{% block title %}
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+	<style type="text/css">
+    	input[type=text]{
+		width: 300px;
+		height: 40px;
+		border-radius: 10px;
+	}
+	input[type=password]{
+		width: 300px;
+		height: 40px;	
+		border-radius: 10px;
+
+	}
+	button{
+		margin-top: 20px;
+	}
+    </style>
+
+<form method="post" style="margin-left: 40%;margin-top: 10%;">
+	<h2>Login</h2>
+	<div class="form-row">
+		<div class="row-6">
+			<div class="form-control">
+		{% csrf_token %}
+		{{form|crispy}}
+		<br>
+
+		<button type="submit" class="btn btn-success">Login</button>
+		<br><br>
+		<link rel="stylesheet" type="text/css" href="">Don't have account? click<a href="{% url 'register' %}"> here</a></link>
+
+	</div>
+</div>
+</div>
+</form>
+{% endblock %}

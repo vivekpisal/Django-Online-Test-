@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	<input type="number" name="number">
+	<br>
+	<button type="submit">Join</button>
+</form>
+
+{% for i in data %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{i.li.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{i.li.description}}</h6>
+    <a href="mygrp/{{i.li.pk}}/{{i.li.name}}" class="card-link">View Group</a>
+
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}

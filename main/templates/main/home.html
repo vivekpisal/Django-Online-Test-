@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+{% for i in user.post.all %}
+	<div class="card" style="width: 25rem; margin-left: 38%;margin-top: 20px;">
+  <div class="card-header">
+		  <img src="{{user.info.profile.url}}" height="50px" width="50px" style="border-radius: 20px;">
+		  	<h3><b>{{user}}</h3></p>
+			  <img src="{{i.pic.url}}" class="card-img-top">
+			  <div class="card-body">
+			    <p class="card-text">{{i.text}}</p>
+			    <small>{{i.datetime}}</small>
+  		</div>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+{% block content %}
+<style type="text/css">
+	input[type=text]{
+		width: 300px;
+	}
+	input[type=email]{
+		width: 300px;
+	}
+	input[type=number]{
+		width: 300px;
+	}
+	button{
+		margin-top: 10px;
+	}
+</style>
+<body style="background-color: grey;">
+{% load crispy_forms_tags %}
+<form method="post" style="margin-left: 38%;margin-top: 9%;">
+	<h1>Information</h1>
+	{% csrf_token %}
+	<div class="form-row">
+		<div class="row-9">
+			<div class="form-control">
+		{{form|crispy}}
+		<button type="submit" class="btn btn-success">Save</button>
+	</div>
+</div>
+</div>
+		
+</form>
+{% endblock %}

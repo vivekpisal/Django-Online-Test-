@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% for i in data %}
+<a href="#" class="list-group-item " style="width: 600px;">{{i}}</a>
+<a href="#" class="list-group-item " style="width: 600px;">{{i.option_one}}<button type="button" class="btn btn-primary" style="margin-left: 5%;" >
+  Votes <span class="badge badge-info">{{i.count_one}}</span>
+  <span class="sr-only">unread messages</span>
+</button></a>
+
+<a href="#" class="list-group-item " style="width: 600px;">{{i.option_two}}<button type="button" class="btn btn-primary"  style="margin-left: 5%;">
+  Votes <span class="badge badge-info">{{i.count_two}}</span>
+  <span class="sr-only">unread messages</span>
+</button></a>
+
+
+<a href="#" class="list-group-item " style="width: 600px;"  style="margin-left: 5%;">{{i.option_three}}<button type="button" class="btn btn-primary" style="margin-left: 5%;">
+  Votes <span class="badge badge-info">{{i.count_three}}</span>
+  <span class="sr-only">unread messages</span>
+</button></a>
+
+{% endfor %}
+{% endblock %}

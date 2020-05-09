@@ -1,0 +1,52 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% ifequal x 0 %}
+
+	<div class="alert alert-danger" role="alert" style="width: 50%;margin-left: 30%;">
+  User Not Found!</div>
+
+{% endifequal %}
+
+  
+
+
+
+<div style="margin-left: 35%;">
+<img src="{{user.info.profile.url}}" height="200px" width="200px" style="border-radius: 100px;margin-left: 14%;">
+<br><br>
+<!------UPLOAD PROFILE  --->
+<form method="post" enctype="multipart/form-data" action="{% url 'profile'%}">
+	{% csrf_token %}
+	 <input type="file" name="profile" accept="image/*" class="clearablefileinput" required id="id_pic"> 
+	 <button type="submit">Update</button>
+</form>
+
+
+<br>
+<br>
+  <a href="#" class="list-group-item " style="width: 600px;"><h4>Username:{{user}}  </h4></a>
+  <a href="#" class="list-group-item" style="width: 600px;"><h5>Role:{{user.info.SorT}}</h5></a>
+   <a href="#" class="list-group-item" style="width: 600px;"><h5>Email:{{user.info.email}}</h5></a>
+   <a href="#" class="list-group-item" style="width: 600px;"><h5>Gender:{{user.info.Gender}}</h5></a>
+</div>
+</div>
+
+<!--------------------------------POSTS -------------------------->
+
+<h2 style="margin-left: 38%;margin-top: 10px;">Posts:</h2>
+
+{% for i in user.post.all %}
+	<div class="card" style="width: 25rem; margin-left: 38%;margin-top: 20px;">
+  <div class="card-header">
+		  <img src="{{user.info.profile.url}}" height="50px" width="50px" style="border-radius: 20px;">
+		  	<h3><b>{{user}}</h3></p>
+			  <img src="{{i.pic.url}}" class="card-img-top">
+			  <div class="card-body">
+			    <p class="card-text">{{i.text}}</p>
+			    <small>{{i.datetime}}</small>
+  		</div>
+	</div>
+</div>
+{% endfor %}
+
+{% endblock %}
